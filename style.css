@@ -1,0 +1,30 @@
+body {
+        background-color: teal;
+    }
+    
+    h1,
+    h2,
+    p {
+        font-family: 'Candal', sans-serif;
+
+    }
+    
+    .jumbotron h1 {
+        color: #777;
+        font-size: 40px;
+
+    }
+    
+    .jumbotron {
+        background-color: orange;
+    }
+    
+    h2 {
+        font-size: 25px;
+        color: #777;
+    }
+    
+    p {
+        color: #ccc;
+        font-size: 20px;
+    }

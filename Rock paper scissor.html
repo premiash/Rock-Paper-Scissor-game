@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>RPG GAME</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Candal|Permanent+Marker|Raleway:500|Reem+Kufi" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container block-center">
+            <h1> Welcome to the Rock, Paper, Scissors game!</h1>
+            <hr>
+            <h2>Press r, p or s to start playing</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div id="game">
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    //sets the computer choices
+    var computerChoices = ['r', 'p', 's'];
+
+    //Declares the tallies to 0
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+
+
+    // When the user presses the key it records the keypress and then sets it to userguess
+    document.onkeyup = function(event) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        //This sets what the computer's guess is and it is equal to a random guess
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        if ((userGuess === 'r') || (userGuess === 'p') || (userGuess === 's')) {
+
+            // All win scenarios
+            if ((userGuess === 'r') && (computerGuess === 's')) {
+                wins++;
+            } 
+            else if ((userGuess === 'p') && (computerGuess === 'r')) {
+                wins++;
+            } 
+            else if ((userGuess === 's') && (computerGuess === 'p')) {
+                wins++;
+            }
+            // All of the losses
+            else if ((userGuess === 'r') && (computerGuess === 'p')) {
+                losses++;
+            } 
+            else if ((userGuess === 'p') && (computerGuess === 's')) {
+                losses++;
+            } 
+            else if ((userGuess === 's') && (computerGuess === 'r')) {
+                losses++;
+            }
+            // Tie scenarios
+            else if (userGuess === computerGuess) {
+                ties++;
+            }
+
+
+            // Taking the tallies and displaying them in HTML
+            var html = "<p>wins: " +
+                wins +
+                "</p>" +
+                "<p>losses: " +
+                losses +
+                "</p>" +
+                "<p>ties: " +
+                ties +
+                "</p>";
+
+            // Placing the html into the game ID
+            document.querySelector('#game').innerHTML = html;
+
+
+        }
+    }
+
+    
+    </script>
+</body>
+
+</html>
